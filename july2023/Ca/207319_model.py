@@ -12,7 +12,7 @@ warnings.simplefilter('ignore', UserWarning)
 q_min = 0.0
 q_max = 1.0
 
-reduced_file = "/SNS/REF_L/IPTS-30384/shared/autoreduce/REFL_207319_combined_data_auto.txt"
+reduced_file = "REFL_207319_combined_data_auto.txt"
 
 Q, R, dR, dQ = numpy.loadtxt(reduced_file).T
 i_min = min([i for i in range(len(Q)) if Q[i]>q_min])
