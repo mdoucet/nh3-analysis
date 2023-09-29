@@ -76,6 +76,7 @@ target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
+rik_kernel*
 
 # IPython
 profile_default/
