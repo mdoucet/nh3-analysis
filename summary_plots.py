@@ -420,7 +420,7 @@ def write_md_table(trend_data_file):
             # Write header
             headers = data[1].keys()
             header = '| ' + '|'.join(headers) + '| chi2 |\n'
-            header += '| ' + '|'.join(len(headers)*['---']) + '|\n'
+            header += '| ' + '|'.join((len(headers)+1)*['---']) + '|\n'
             output.write(header)
 
             for i in range(len(data[0])):

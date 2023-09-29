@@ -1,3 +1,7 @@
+*-point.mc
+*-stats.mc
+*-chain.mc
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
