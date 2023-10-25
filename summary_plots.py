@@ -362,10 +362,10 @@ def trend_data(file_list, initial_state, final_state, label='',
 
     if plot_chi2:
         ax = plt.subplot(n_tot, 1, n_tot)
-        plt.plot(timestamp, chi2, label='$\chi^2$ [%s]' % label)
-        plt.plot(timestamp, nlprior, label='prior [%s]' % label, linestyle='--')
+        plt.plot(timestamp, chi2, label='$\chi^2$')
+        plt.plot(timestamp, nlprior, label='prior', linestyle='--')
         plt.ylabel('$\chi^2$')
-        #plt.legend(frameon=False)
+        plt.legend(frameon=False)
 
     plt.xlabel("Time (seconds)")
 
