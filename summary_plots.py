@@ -419,8 +419,8 @@ def write_md_table(trend_data_file):
         with open(output_file, 'w') as output:
             # Write header
             headers = data[1].keys()
-            header = '| ' + '|'.join(headers) + '| chi2 |\n'
-            header += '| ' + '|'.join((len(headers)+1)*['---']) + '|\n'
+            header = '| Time | ' + '|'.join(headers) + '| chi2 |\n'
+            header += '| ' + '|'.join((len(headers)+2)*['---']) + '|\n'
             output.write(header)
 
             for i in range(len(data[0])):
@@ -488,6 +488,7 @@ def detect_changes(dynamic_run, dyn_data_dir, first=0, last=-1, out_array=None):
                     new_err = np.asarray(new_err)
 
                     delta = np.mean((new_r - old_r)**2 / (new_err**2 + old_err**2))
+                    #delta = np.mean((new_r - old_r)**2 / (new_err**2))
                     chi2.append(delta)
                     _asym = np.mean((new_r-old_r)/(new_r+old_r))
                     asym.append(_asym)
@@ -506,8 +507,10 @@ def detect_changes(dynamic_run, dyn_data_dir, first=0, last=-1, out_array=None):
                 previous_err = _data[2]
 
     if out_array:
-        np.save(out_array, np.asarray(compiled_array))
-        np.save(out_array+'_times', np.asarray(compiled_times))
+        #np.save(out_array, np.asarray(compiled_array))
+        #np.save(out_array+'_times', np.asarray(compiled_times))
+        np.savetxt(out_array+'_chi2.txt', t)
+        np.savetxt(out_array+'_times.txt', t)
     print("Skipped: %s" % skipped)
     fig = plt.figure(dpi=100, figsize=[8,4])
     plt.plot(t, chi2, markersize=10, marker='.', linestyle='--', label='$\chi^2$')
@@ -515,7 +518,7 @@ def detect_changes(dynamic_run, dyn_data_dir, first=0, last=-1, out_array=None):
     #plt.legend(frameon=False)
     plt.ylabel('$\chi^2$')
     plt.xlabel('Time (sec)')
-    
+    return t, chi2
 
 
 def package_data(dynamic_run, dyn_data_dir, first=0, last=-1, qmin=0, qmax=1, max_len=None, out_array=None):

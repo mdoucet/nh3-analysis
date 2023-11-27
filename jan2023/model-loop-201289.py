@@ -11,11 +11,6 @@ from refl1d.names import QProbe, Parameter, FitProblem
 sys.path.append(os.path.expanduser('~/git/analysis_playground/bayesian-fitting'))
 import model_utils
 
-import warnings
-import matplotlib.cbook
-warnings.filterwarnings("ignore",category=matplotlib.cbook.mplDeprecation)
-warnings.simplefilter('ignore', UserWarning)
-
 # Parse input arguments ########################################################
 # First argument is the data file to use
 reduced_file = sys.argv[1]
@@ -55,14 +50,19 @@ expt = model_utils.expt_from_json_file(expt_file, probe=probe,
 #sample['material'].thickness = constraint_thickness(sample['material'].thickness)
 
 #expt.sample['Ti'].interface.range(1.0, 35.0)
-#expt.sample['Ti'].material.rho.range(-2.0, 0)
+expt.sample['Ti'].material.rho.range(-3.5, 0)
 
 
 #expt.sample['Cu'].interface.range(5.0, 22.0)
-#expt.sample['Cu'].thickness.range(expt.sample['Cu'].thickness.value*0.97, expt.sample['Cu'].thickness.value*1.03)
+expt.sample['Cu'].thickness.range(expt.sample['Cu'].thickness.value*0.97, expt.sample['Cu'].thickness.value*1.03)
 
 
-expt.sample['material'].thickness.range(25.0, 80.0)
+# For short run
+# expt.sample['material'].thickness.range(25.0, 80.0)
+
+expt.sample['material'].thickness.range(25.0, 110.0)
+
+
 expt.sample['material'].material.rho.range(-1.0, 5.5) # Cu-K was 4.0
 #expt.sample['material'].material.irho.range(0.0, 0.3)
 expt.sample['material'].interface.range(1.0, 25.0)

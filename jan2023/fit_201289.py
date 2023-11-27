@@ -41,7 +41,7 @@ final_err_file = os.path.join(dyn_model_dir, '201290', '__model-err.json')
 final_expt_file = os.path.join(dyn_model_dir, '201290', '__model-expt.json')
 
 dynamic_run = 201289
-store_basename = os.path.join(dyn_model_dir, '%s-dyn/results-30s-bck' % dynamic_run)
+store_basename = os.path.join(dyn_model_dir, '%s-dyn/results-30s-bck-long' % dynamic_run)
 
 results_dir = os.path.join(dyn_model_dir, store_basename)
 
@@ -59,7 +59,8 @@ except:
 PROCESS_ALL_DATA = True
 
 first = 0
-last = 12
+#last = 12
+last = 100
 
 if PROCESS_ALL_DATA:
     _file_list = sorted(os.listdir(dyn_data_dir))
