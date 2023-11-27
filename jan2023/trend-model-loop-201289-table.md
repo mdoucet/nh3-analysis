@@ -1,4 +1,4 @@
-| THF interface|SEI interface|SEI rho|SEI thickness|material interface|material rho|material thickness|Cu thickness|Ti rho| chi2 |
+| Time | THF interface|SEI interface|SEI rho|SEI thickness|material interface|material rho|material thickness|Cu thickness|Ti rho| chi2 |
 | ---|---|---|---|---|---|---|---|---|---|
 | 0 | 83.48 ± 37.89 | 18.62 ± 4.57 | 6.10 ± 0.27 | 140.22 ± 70.05 | 23.01 ± 1.93 | 4.19 ± 0.53 | 69.44 ± 17.17 | 522.63 ± 5.40 | -2.65 ± 0.06 | 0.523161 |
 | 30 | 49.81 ± 40.82 | 16.74 ± 4.69 | 5.36 ± 0.68 | 115.56 ± 84.01 | 23.03 ± 1.77 | 4.17 ± 0.48 | 48.96 ± 26.56 | 520.45 ± 3.97 | -2.60 ± 0.06 | 0.594332 |
