@@ -7,6 +7,8 @@ import matplotlib.lines as mlines
 
 from matplotlib.path import Path
 from matplotlib.patches import PathPatch
+import matplotlib.colors as colors
+import matplotlib.cm as cmx
 
 try:
     from bumps import dream
@@ -34,7 +36,7 @@ def read_model(model_path, dq=0.027):
         print("Read in %s" % model_path)
 
 
-def plot_sld(run, title, fit_dir=None, show_cl=True, dq=0.027, z_offset=0.0):
+def plot_sld(run, title, fit_dir=None, show_cl=True, dq=0.027, z_offset=0.0, color=None):
     """
         :param ar_dir: Automated-reduction directory
     """
@@ -67,7 +69,10 @@ def plot_sld(run, title, fit_dir=None, show_cl=True, dq=0.027, z_offset=0.0):
         #z, sld, dsld = acc_data.mean()
         #plt.fill_between(z[1:], sld[1:]-dsld[1:], sld[1:]+dsld[1:],
         #                alpha=0.2)
-    plt.plot(pre_sld[0][-1]-pre_sld[0]+z_offset, pre_sld[1], markersize=4, label=title, linewidth=2, )
+    if color is not None:
+        plt.plot(pre_sld[0][-1]-pre_sld[0]+z_offset, pre_sld[1], markersize=4, label=title, linewidth=2, color=color)
+    else:
+        plt.plot(pre_sld[0][-1]-pre_sld[0]+z_offset, pre_sld[1], markersize=4, label=title, linewidth=2, )
 
 
 def plot_fit(run, title, fit_dir=None, ar_dir=None, scale=1):
@@ -177,25 +182,40 @@ def plot_dyn_data(dynamic_run, initial_state, final_state, first_index=0, last_i
     return file_list
 
 
+def get_color_list(n_curves, cmap='cool'):
+    cm = plt.get_cmap(cmap) 
+    c_norm  = colors.Normalize(vmin=0, vmax=n_curves+1.1)
+    scalar_map = cmx.ScalarMappable(norm=c_norm, cmap=cm)
+    
+    color_list = []
+    for idx in range(n_curves):
+        color_list.append(scalar_map.to_rgba(idx))
+    return color_list
+    
 def plot_dyn_sld(file_list, initial_state, final_state, delta_t=15,
                  fit_dir=None, dyn_data_dir=None, dyn_fit_dir=None, model_name='__model',
-                 model_file=None, show_cl=True, legend_font_size=6):
+                 model_file=None, show_cl=True, legend_font_size=6, cmap=None, max_z=None):
 
     fig, ax = plt.subplots(dpi=250, figsize=(5, 4.1))
     plt.subplots_adjust(left=0.15, right=.95, top=0.95, bottom=0.15)
 
     prop_cycle = plt.rcParams['axes.prop_cycle']
-    colors = prop_cycle.by_key()['color']
+
+    if cmap is not None:
+        color_list = get_color_list(len(file_list)+2, cmap=cmap)
+    else:
+        color_list = prop_cycle.by_key()['color']
+    
 
     # Plot initial state
     i_color = 0
     if initial_state is not None:
+        plot_sld(initial_state, 'Initial state', fit_dir=fit_dir, color=color_list[i_color], show_cl=False)  
         i_color = 1
-        plot_sld(initial_state, 'Initial state', fit_dir=fit_dir, show_cl=False)  
 
     for _file in file_list:
         i_color += 1
-        i_color = i_color % len(colors)
+        i_color = i_color % len(color_list)
         profile_file = os.path.join(dyn_fit_dir, str(_file[2]), '%s-profile.dat' % model_name)
         if not os.path.isfile(profile_file):
             print("Could not find: %s" % profile_file)
@@ -206,8 +226,10 @@ def plot_dyn_sld(file_list, initial_state, final_state, delta_t=15,
             mc_file = os.path.join(dyn_fit_dir, str(_file[2]), '%s-chain.mc' % model_name)
             if os.path.isfile(mc_file):
                 if model_file is None:
-                    model_file = os.path.join(dyn_fit_dir, str(_file[2]), '%s.py' % model_name)
-                read_model(model_file)
+                    _model_file = os.path.join(dyn_fit_dir, str(_file[2]), '%s.py' % model_name)
+                    read_model(_model_file)
+                else:
+                    read_model(model_file)
                 model_path = os.path.join(dyn_fit_dir, str(_file[2]), model_name)
                 print("Model: %s" % model_path)
                 state = dream.state.load_state(model_path)
@@ -219,20 +241,22 @@ def plot_dyn_sld(file_list, initial_state, final_state, delta_t=15,
                                                         z_max=z_max)[0]
 
                 _z, _q = acc_data.quantiles(90)
-                plt.fill_between(_z, _q[0][0], _q[0][1], color=colors[i_color], alpha=0.2)
+                plt.fill_between(_z, _q[0][0], _q[0][1], color=color_list[i_color], alpha=0.2)
             
         _label = '%d < t < %d s' % (int(_file[0]), int(_file[0])+delta_t)
-        plt.plot(_data[0][-1]-_data[0], _data[1], markersize=4, color=colors[i_color],
+        plt.plot(_data[0][-1]-_data[0], _data[1], markersize=4, color=color_list[i_color],
                  label=_label, linewidth=1, )
 
     # Plot final OCP
     if final_state is not None:
-        plot_sld(final_state, 'Final state', fit_dir=fit_dir, show_cl=False)           
+        plot_sld(final_state, 'Final state', fit_dir=fit_dir, show_cl=False, color=color_list[i_color])           
         
     handles, labels = ax.get_legend_handles_labels()
     #plt.legend(frameon=False, prop={'size': 10})
     plt.legend(handles[::-1], labels[::-1], loc='lower right', frameon=False, fontsize=legend_font_size)
     plt.xlabel('z ($\AA$)', fontsize=14)
+    if max_z is not None:
+        plt.xlim(-20, max_z)
     plt.ylabel('SLD ($10^{-6}/\AA^2$)', fontsize=14)
     plt.show()
 
@@ -270,7 +294,7 @@ def trend_data(file_list, initial_state, final_state, label='',
         err_json = os.path.join(dyn_fit_dir, str(_file[2]), '%s-err.json' % model_name)
         bayes_json = os.path.join(dyn_fit_dir, str(_file[2]), '%s-bayes.dat' % model_name)
 
-        if os.path.isfile(err_json):
+        if os.path.isfile(bayes_json):
             with open(bayes_json) as fd:
                 for l in fd.readlines():
                     if l.startswith('NLL'):
@@ -284,10 +308,14 @@ def trend_data(file_list, initial_state, final_state, label='',
                         _npts = float(toks[1])
                 chi2.append(_nll/_npts)
                 nlprior.append(_nlprior/_npts)
-
+                
+        if os.path.isfile(err_json):
             with open(err_json) as fd:
                 m = json.load(fd)
-                for par in trend_data.keys():
+                for par in m.keys():
+                    if par not in trend_data:
+                        trend_data[par] = []
+                        trend_err[par] = []
                     trend_data[par].append(m[par][which])
                     trend_err[par].append(m[par]['std'])
 
@@ -350,6 +378,10 @@ def trend_data(file_list, initial_state, final_state, label='',
 
     n_current = 1
     for i, par in enumerate(trend_data.keys()):
+        # Sanity check in case parameters appeared in the middle of the series
+        if len(timestamp) > len(trend_data[par]):
+            continue
+
         ax = plt.subplot(n_tot, 1, i+1)
         plt.errorbar(timestamp, trend_data[par], yerr=trend_err[par], label=par, marker='.', markersize=8, linestyle='--')
         #plt.xlabel('seconds')
@@ -360,7 +392,7 @@ def trend_data(file_list, initial_state, final_state, label='',
         plt.ylabel(par)
         #plt.legend(frameon=False)
 
-    if plot_chi2:
+    if plot_chi2 and len(timestamp) == len(chi2):
         ax = plt.subplot(n_tot, 1, n_tot)
         plt.plot(timestamp, chi2, label='$\chi^2$')
         plt.plot(timestamp, nlprior, label='prior', linestyle='--')
@@ -369,9 +401,15 @@ def trend_data(file_list, initial_state, final_state, label='',
 
     plt.xlabel("Time (seconds)")
 
-    with open(os.path.join(dyn_fit_dir, 'trend-%s.json' % model_name), 'w') as fp:
-        json.dump([timestamp, trend_data, trend_err, chi2], fp)
-    return trend_data, trend_err
+    try:
+        with open(os.path.join(dyn_fit_dir, 'trend-%s.json' % model_name), 'w') as fp:
+            json.dump([timestamp, trend_data, trend_err, chi2], fp)
+    except:
+        print("Could not write file")
+    
+    for p in steady_values:
+        print(p, steady_values[p])
+    return timestamp, trend_data, trend_err
         
 
 def save_parameters():
@@ -479,6 +517,8 @@ def detect_changes(dynamic_run, dyn_data_dir, first=0, last=-1, out_array=None):
                         if len(idx) > 0:
                             new_r.append(_data[1][i])
                             new_err.append(_data[2][i])
+                            #old_r.append(_data[1][1])
+                            #old_err.append(_data[2][1])
                             old_r.append(previous[idx[0][0]])
                             old_err.append(previous_err[idx[0][0]])
 
@@ -487,8 +527,9 @@ def detect_changes(dynamic_run, dyn_data_dir, first=0, last=-1, out_array=None):
                     new_r = np.asarray(new_r)
                     new_err = np.asarray(new_err)
 
-                    delta = np.mean((new_r - old_r)**2 / (new_err**2 + old_err**2))
-                    #delta = np.mean((new_r - old_r)**2 / (new_err**2))
+                    delta = 1 - np.sum((new_r - old_r)**2) / np.sum(new_r)
+                    #delta = np.mean((new_r - old_r)**2 / new_err**2)
+
                     chi2.append(delta)
                     _asym = np.mean((new_r-old_r)/(new_r+old_r))
                     asym.append(_asym)
