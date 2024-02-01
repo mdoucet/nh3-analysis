@@ -194,7 +194,7 @@ def get_color_list(n_curves, cmap='cool'):
     
 def plot_dyn_sld(file_list, initial_state, final_state, delta_t=15,
                  fit_dir=None, dyn_data_dir=None, dyn_fit_dir=None, model_name='__model',
-                 model_file=None, show_cl=True, legend_font_size=6, cmap=None, max_z=None):
+                 model_file=None, show_cl=True, legend_font_size=6, cmap=None, max_z=None, reverse=True):
 
     fig, ax = plt.subplots(dpi=250, figsize=(5, 4.1))
     plt.subplots_adjust(left=0.15, right=.95, top=0.95, bottom=0.15)
@@ -209,11 +209,15 @@ def plot_dyn_sld(file_list, initial_state, final_state, delta_t=15,
 
     # Plot initial state
     i_color = 0
-    if initial_state is not None:
+    if initial_state is not None and not reverse:
         plot_sld(initial_state, 'Initial state', fit_dir=fit_dir, color=color_list[i_color], show_cl=False)  
         i_color = 1
+    if final_state is not None and reverse:
+        plot_sld(final_state, 'Final state', fit_dir=fit_dir, show_cl=False, color=color_list[i_color])
+        i_color = 1
 
-    for _file in file_list:
+    _file_list = reversed(file_list) if reverse else file_list
+    for _file in _file_list:
         i_color += 1
         i_color = i_color % len(color_list)
         profile_file = os.path.join(dyn_fit_dir, str(_file[2]), '%s-profile.dat' % model_name)
@@ -248,8 +252,10 @@ def plot_dyn_sld(file_list, initial_state, final_state, delta_t=15,
                  label=_label, linewidth=1, )
 
     # Plot final OCP
-    if final_state is not None:
-        plot_sld(final_state, 'Final state', fit_dir=fit_dir, show_cl=False, color=color_list[i_color])           
+    if final_state is not None and not reverse:
+        plot_sld(final_state, 'Final state', fit_dir=fit_dir, show_cl=False, color=color_list[i_color])
+    if initial_state is not None and reverse:
+        plot_sld(initial_state, 'Initial state', fit_dir=fit_dir, color=color_list[i_color], show_cl=False)
         
     handles, labels = ax.get_legend_handles_labels()
     #plt.legend(frameon=False, prop={'size': 10})
