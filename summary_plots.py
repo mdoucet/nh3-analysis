@@ -194,7 +194,8 @@ def get_color_list(n_curves, cmap='cool'):
     
 def plot_dyn_sld(file_list, initial_state, final_state, delta_t=15,
                  fit_dir=None, dyn_data_dir=None, dyn_fit_dir=None, model_name='__model',
-                 model_file=None, show_cl=True, legend_font_size=6, cmap=None, max_z=None, reverse=True):
+                 model_file=None, show_cl=True, legend_font_size=6, cmap=None, max_z=None,
+                 reverse=True, sld_range=None):
 
     fig, ax = plt.subplots(dpi=250, figsize=(5, 4.1))
     plt.subplots_adjust(left=0.15, right=.95, top=0.95, bottom=0.15)
@@ -252,6 +253,7 @@ def plot_dyn_sld(file_list, initial_state, final_state, delta_t=15,
                  label=_label, linewidth=1, )
 
     # Plot final OCP
+    i_color += 1
     if final_state is not None and not reverse:
         plot_sld(final_state, 'Final state', fit_dir=fit_dir, show_cl=False, color=color_list[i_color])
     if initial_state is not None and reverse:
@@ -263,6 +265,8 @@ def plot_dyn_sld(file_list, initial_state, final_state, delta_t=15,
     plt.xlabel('z ($\AA$)', fontsize=14)
     if max_z is not None:
         plt.xlim(-20, max_z)
+    if sld_range is not None:
+        plt.ylim(sld_range[0], sld_range[1])
     plt.ylabel('SLD ($10^{-6}/\AA^2$)', fontsize=14)
     plt.show()
 
