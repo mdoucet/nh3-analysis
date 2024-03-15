@@ -28,7 +28,7 @@ err_file = sys.argv[3]
 
 # 0.1 was used so far (Jan 2023) with good results
 #prior_scale = 0.1
-prior_scale = 0.0
+prior_scale = 1
 
 # Load data ####################################################################
 q_min = 0.0
@@ -38,7 +38,7 @@ try:
     Q, R, dR, dQ = np.loadtxt(reduced_file).T
 except:
     Q, R, dR = np.loadtxt(reduced_file).T
-    dQ = 0.02*Q
+    dQ = 0.028*Q
 
 i_min = np.min([i for i in range(len(Q)) if Q[i]>q_min])
 i_max = np.max([i for i in range(len(Q)) if Q[i]<q_max])+1
@@ -52,22 +52,41 @@ expt = model_utils.expt_from_json_file(expt_file, probe=probe,
                                        model_err_json_file=err_file,
                                        prior_scale=prior_scale, set_ranges=False)
 
-expt.sample['material'].thickness.range(10.0, 300.0)
-expt.sample['material'].material.rho.range(-1.0, 10.0)
+#sample['material'].thickness = constraint_thickness(sample['material'].thickness)
+
+#expt.sample['Ti'].interface.range(1.0, 35.0)
+expt.sample['Ti'].material.rho.range(-3.0, 0)
+
+
+expt.sample['Cu'].interface.range(5.0, 22.0)
+#expt.sample['Cu'].thickness.range(expt.sample['Cu'].thickness.value*0.97, expt.sample['Cu'].thickness.value*1.03)
+
+
+expt.sample['material'].thickness.range(25.0, 80.0)
+expt.sample['material'].material.rho.range(-1.0, 6.5) # Cu-K was 4.0
 #expt.sample['material'].material.irho.range(0.0, 0.3)
 #expt.sample['material'].interface.range(1.0, 22.0)
 expt.sample['material'].interface.range(5, expt.sample['material'].thickness.value/2+5)
 
 
-expt.sample['SEI'].thickness.range(10.0, 800.0)
-expt.sample['SEI'].material.rho.range(-5, 6.3)
+expt.sample['SEI'].thickness.range(55.0, 350.0)
+expt.sample['SEI'].material.rho.range(3.5, 6.3)
 #expt.sample['SEI'].material.irho.range(0.0, 0.3)
-expt.sample['SEI'].interface.range(1.0, 100.0)
+expt.sample['SEI'].interface.range(8.0, 25.0)
 
-#expt.sample['THF'].interface.range(1.0, 150.0)
-expt.sample['THF'].interface.range(5, expt.sample['SEI'].thickness.value/2+5)
+neigh_thick = min(expt.sample['material'].thickness.value, expt.sample['SEI'].thickness.value)
 
-probe.intensity.range(0.95, 1.8)
+#expt.sample['SEI'].interface.range(5, expt.sample['material'].thickness.value/2+5)
+#expt.sample['SEI'].interface.range(5, neigh_thick+5)
+
+def thf_rough(thick):
+    return thick/2.0
+
+expt.sample['THF'].interface.range(15.0, 150.0)
+#expt.sample['THF'].interface.range(5, expt.sample['SEI'].thickness.value/2+5)
+#expt.sample['THF'].interface = thf_rough(expt.sample['SEI'].thickness)
+
+#probe.intensity.range(0.95, 1.8)
 
 ################################################################################
 problem = FitProblem(expt)

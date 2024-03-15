@@ -229,6 +229,9 @@ def plot_dyn_sld(file_list, initial_state, final_state, delta_t=15,
         
         if HAS_BUMPS and show_cl:
             mc_file = os.path.join(dyn_fit_dir, str(_file[2]), '%s-chain.mc' % model_name)
+            if not os.path.isfile(mc_file):
+                mc_file = os.path.join(dyn_fit_dir, str(_file[2]), '%s-chain.mc.gz' % model_name)
+                print(mc_file)
             if os.path.isfile(mc_file):
                 if model_file is None:
                     _model_file = os.path.join(dyn_fit_dir, str(_file[2]), '%s.py' % model_name)
