@@ -3,7 +3,29 @@
 QUESTION: in which figure do we use January Cu-F?
 
 ## Figure 1: Structure as a function of current density
-July Cu-A. Fit output files can be found in `july2023/data/
+July Cu-A. Fit output files can be found in `july2023/data/results/refl1d_output`.
+
+| Current | Run |
+| --- | --- |
+| OCV 1 | 206907 |
+| -0.5 | 206915 |
+| -0.5 | 206931 |
+| -1 | 206946 |
+| -2 | 206961 |
+| -3 | 206976 |
+| 1 hour | 206998 |
+
+![ ](july2023/notebooks/july2023-Rq-Cu-A.png)
+![ ](july2023/notebooks/july2023-Cu-A.png)
+
+
+The last two measurements, at the highest current and following an hour, don't show evidence of
+a distinct inner layer. In the plot above, we model those two runs without an inner layer.
+The inner layer is likely still present, but the SEI layer has a slightly lower SLD that for
+previous measurement, such that there is no contrast with the inner layer.
+To justify our approach, we compared both measurements modeled with and without an innder layer.
+The results agree within the 90% confidence intervals and there is therefore no value is modeling this data with an inner layer.
+
 
 ## Figure 2: Time-resolved
 
@@ -39,7 +61,12 @@ The plots are missing Cu-G with THF and dEtOH.
     - [Parameters for OCV 4](july2023/data/results/REFL_207304.md)
 
 - dTHF, dEtOH is Cu-F
-
+   ![ ](july2023/notebooks/july2023-Rq-Cu-F.png)
+    ![ ](july2023/notebooks/july2023-Cu-F.png)
+    - [Parameters for OCV 1](july2023/data/results/REFL_207161.md)
+    - [Parameters for OCV 2](july2023/data/results/REFL_207169.md)
+    - [Parameters for OCV 3](july2023/data/results/REFL_207177.md)
+    - [Parameters for OCV 4](july2023/data/results/REFL_207187.md)
 - THF, dEtOH is Cu-G
     - Results unchanged from previous version of the paper.
 
