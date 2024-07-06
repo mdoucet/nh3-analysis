@@ -58,7 +58,7 @@ class Measurement:
         sample['siox'].interface.range(1.0, 20.0)
         sample['siox'].material.rho.range(1.3, 4.0)
         sample['Ti'].thickness.range(10.0, 100.0)
-        sample['Ti'].interface.range(1.0, 12.0)
+        sample['Ti'].interface.range(1.0, 10.0)
         sample['Ti'].material.rho.range(-4, 0)
         sample['Cu'].thickness.range(10.0, 800.0)
         sample['Cu'].interface.range(5.0, 22.0)
