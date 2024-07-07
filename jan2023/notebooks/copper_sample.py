@@ -41,7 +41,7 @@ class Measurement:
         SEI = SLD(name='SEI', rho=2.5, irho=0.0)
 
         # Film definition ##############################################################
-        sample = (  THF(0, 54.16) | SEI(222, 9.74) | material(42, 9.74) | Cu(560.6, 15.24) | Ti(51, 11.1) | siox(32, 2.92) | Si )
+        sample = (  THF(0, 54.16) | SEI(300, 9.74) | material(42, 9.74) | Cu(560.6, 15.24) | Ti(51, 11.1) | siox(32, 2.92) | Si )
         return sample
 
     def get_experiment(self):
@@ -66,10 +66,10 @@ class Measurement:
         sample['material'].thickness.range(40.0, 200.0)
         sample['material'].material.rho.range(1.0, 8.0)
         sample['material'].interface.range(5.0, 33.0)
-        sample['SEI'].thickness.range(100.0, 450.0)
+        sample['SEI'].thickness.range(100.0, 550.0)
         sample['SEI'].material.rho.range(0.0, 7.0)
         #sample['SEI'].material.irho.range(0.0, 0.2)
-        sample['SEI'].interface.range(1.0, 65.0)
+        sample['SEI'].interface.range(1.0, 25.0)
 
         probe.intensity.range(0.5, 1.15)
         #probe.background.range(0.0, 1e-05)
