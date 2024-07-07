@@ -51,6 +51,7 @@ expt = model_utils.expt_from_json_file(expt_file, probe=probe,
 
 #expt.sample['Ti'].interface.range(1.0, 35.0)
 expt.sample['Ti'].material.rho.range(-3.5, 0)
+expt.sample['siox'].material.rho.range(1.5, 4.2)
 
 
 #expt.sample['Cu'].interface.range(5.0, 22.0)
