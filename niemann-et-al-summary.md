@@ -117,10 +117,16 @@ the fit.
 ![ ](july2023/notebooks/july2023-Cu-A-206976-HC.png)
 
 ## Figure 2: Time-resolved
-
 - [dTHF, no EtOH is Jan Cu-B](jan2023/trend-model-loop-201289-table.md)
+![](jan2023/notebooks/Cu-B.png)
+
 - [dTHF, EtOH is Cu-K](july2023/trend-model-loop-207275-table.md)
+![](july2023/notebooks/Cu-K.png)
+
 - [dTHF, dEtOH is Cu-F](july2023/trend-model-loop-207168-table.md)
+![](july2023/notebooks/Cu-F.png)
+
+
 
 ## Figure 3: Deuteration comparison
 
