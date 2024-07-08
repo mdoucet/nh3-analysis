@@ -170,19 +170,22 @@ Runs: [201334, 207296, 207177, 207218]
     - [Parameters for OCV 3](july2023/data/results/REFL_207177.md)
     - [Parameters for OCV 4](july2023/data/results/REFL_207187.md)
 - THF, dEtOH is Cu-G
-    - Results unchanged from previous version of the paper.
-
- 
+   ![ ](july2023/notebooks/july2023-Rq-Cu-G.png)
+    ![ ](july2023/notebooks/july2023-Cu-G.png)
+    - [Parameters for OCV 1](july2023/data/results/REFL_207194.md)
+    - [Parameters for OCV 2](july2023/data/results/REFL_207202.md)
+    - [Parameters for OCV 3](july2023/data/results/REFL_207210.md)
+    - [Parameters for OCV 4](july2023/data/results/REFL_207218.md)
 
 
 Samples used for Figures 2 and 3
-| |[January Cu-B dTHF no EtOH](jan2023/notebooks/Cu-B.ipynb) | [Cu-K dTHF + EtOH](july2023/notebooks/Cu-K.ipynb)| [Cu-F dTHF + dEtOH](july2023/notebooks/Cu-F.ipynb)|Cu-G THF + dEtOH|
+| |[January Cu-B dTHF no EtOH](jan2023/notebooks/Cu-B.ipynb) | [Cu-K dTHF + EtOH](july2023/notebooks/Cu-K.ipynb)| [Cu-F dTHF + dEtOH](july2023/notebooks/Cu-F.ipynb)|[Cu-G THF + dEtOH](july2023/notebooks/Cu-G.ipynb)|
 |---| ---|---|---|---|
 |OCV 1| 201282 |207268|207161|207194|
 |CP 1| 201289| 207275|207168|207201|
 |OCV 2| 201290 |207282|207169|207202
 |OCV 3|201298|207296|207177|207210
-|OCV 4|201306 or 201334?|207304|207187|207218|
+|OCV 4|201306|207304|207187|207218|
 
 
 

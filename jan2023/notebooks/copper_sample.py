@@ -54,11 +54,11 @@ class Measurement:
         probe = self.experiment.probe
         sample = self.experiment.sample
 
-        sample['siox'].thickness.range(10.0, 30.0)
+        sample['siox'].thickness.range(10.0, 40.0)
         sample['siox'].interface.range(1.0, 20.0)
         sample['siox'].material.rho.range(1.3, 4.0)
         sample['Ti'].thickness.range(10.0, 100.0)
-        sample['Ti'].interface.range(1.0, 10.0)
+        sample['Ti'].interface.range(1.0, 9.0)
         sample['Ti'].material.rho.range(-4, 0)
         sample['Cu'].thickness.range(10.0, 800.0)
         sample['Cu'].interface.range(5.0, 22.0)
