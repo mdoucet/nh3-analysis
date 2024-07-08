@@ -29,7 +29,7 @@ The results agree within the 90% confidence intervals and there is therefore no 
 
 #### Table S2: OCV 1, Intensity: 1.04 ± 0.01, $\chi^2$:  0.8
 
-| Layer | Thickness (Å) | SLD (x $10^{-6}$ Å$^{-2}$) | Roughness (Å) |
+| Layer | Thickness (Å) | SLD (x $10^{-6}$ $Å^{-2}$) | Roughness (Å) |
 | --- | --- | --- | --- | 
 |                  THF | - | 6.05 ± 0.04 | 19.86 ± 0.72 |
 |             Inner layer | 50.38 ± 2.18 | 4.61 ± 0.07 | 8.95 ± 1.04 |
@@ -40,7 +40,7 @@ The results agree within the 90% confidence intervals and there is therefore no 
 
 #### Table S3: -0.5 $mA/cm^2$, Intensity: 1.00 ± 0.01, $\chi^2$:    1.0
 
-| Layer | Thickness (Å) | SLD (x $10^{-6}$ Å$^{-2}$) | Roughness (Å) |
+| Layer | Thickness (Å) | SLD (x $10^{-6}$ $Å^{-2}$) | Roughness (Å) |
 | --- | --- | --- | --- | 
 |                  THF | - | 6.05 | 68.20 ± 1.96 |
 |                  SEI | 225.05 ± 5.28 | 2.68 ± 0.16 | 24.63 ± 4.12 |
@@ -52,7 +52,7 @@ The results agree within the 90% confidence intervals and there is therefore no 
 
 #### Table S4: -0.5 $mA/cm^2$, Intensity: 0.98 ± 0.01, $\chi^2$:  1.2
 
-| Layer | Thickness (Å) | SLD (x $10^{-6}$ Å$^{-2}$) | Roughness (Å) |
+| Layer | Thickness (Å) | SLD (x $10^{-6}$ $Å^{-2}$) | Roughness (Å) |
 | --- | --- | --- | --- | 
 |                  THF | - | 6.05 | 71.60 ± 2.37 |
 |                  SEI | 228.23 ± 11.49 | 2.78 ± 0.17 | 24.48 ± 4.84 |
@@ -64,7 +64,7 @@ The results agree within the 90% confidence intervals and there is therefore no 
 
 #### TAble S5: -1 $mA/cm^2$, Intensity: 0.95 ± 0.01, $\chi^2$:  1.5
 
-| Layer | Thickness (Å) | SLD (x $10^{-6}$ Å$^{-2}$) | Roughness (Å) |
+| Layer | Thickness (Å) | SLD (x $10^{-6}$ $Å^{-2}$) | Roughness (Å) |
 | --- | --- | --- | --- | 
 |                  THF | - | 6.05 | 77.41 ± 2.55 |
 |                  SEI | 247.35 ± 14.94 | 2.46 ± 0.19 |  24.89 ± 4.91 |
@@ -76,7 +76,7 @@ The results agree within the 90% confidence intervals and there is therefore no 
 
 #### Table S6: -2 $mA/cm^2$, Intensity: 0.94 ± 0.01, $\chi^2$:  1.2
 
-| Layer | Thickness (Å) | SLD (x $10^{-6}$ Å$^{-2}$) | Roughness (Å) |
+| Layer | Thickness (Å) | SLD (x $10^{-6}$ $Å^{-2}$) | Roughness (Å) |
 | --- | --- | --- | --- | 
 |                  THF | - | 6.05 |  78.90 ± 2.96 |
 |                  SEI | 267.01 ± 35.32 | 2.39 ± 0.20 |  24.73 ± 6.79 |
@@ -88,7 +88,7 @@ The results agree within the 90% confidence intervals and there is therefore no 
 
 #### Table S7: -3 $mA/cm^2$, Intensity: 0.91 ± 0.01, $\chi^2$:  1.5
 
-| Layer | Thickness (Å) | SLD (x $10^{-6}$ Å$^{-2}$) | Roughness (Å) |
+| Layer | Thickness (Å) | SLD (x $10^{-6}$ $Å^{-2}$) | Roughness (Å) |
 | --- | --- | --- | --- |
 |                  THF | - | 6.05 |  74.51 ± 2.14 |
 |                  SEI | 272.76 ± 3.38 | 1.96 ± 0.10 |  9.69 ± 0.41 |
@@ -99,7 +99,7 @@ The results agree within the 90% confidence intervals and there is therefore no 
 
 #### Table S8: Sustained current$, Intensity: 0.73 ± 0.01, $\chi^2$:  1.6
 
-| Layer | Thickness (Å) | SLD (x $10^{-6}$ Å$^{-2}$) | Roughness (Å) |
+| Layer | Thickness (Å) | SLD (x $10^{-6}$ $Å^{-2}$) | Roughness (Å) |
 | --- | --- | --- | --- | 
 |                  THF | - | 6.05 |  81.73 ± 3.04 |
 |                  SEI | 279.38 ± 4.50 | 1.72 ± 0.11 | 9.49 ± 0.43 |
