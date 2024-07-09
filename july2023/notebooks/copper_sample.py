@@ -187,22 +187,36 @@ def write_markdown_table(measurement, output_file):
 
 
 class Measurement_K_OCV3(Measurement):
+    def get_sample(self):
+        # Materials ####################################################################
+        Si = SLD(name='Si', rho=2.07, irho=0.0)
+        THF = SLD(name='THF', rho=self.thf_sld, irho=0.0)
+        siox = SLD(name='siox', rho=3.2, irho=0.0)
+        Ti = SLD(name='Ti', rho=-2.0, irho=0.0)
+        Cu = SLD(name='Cu', rho=self.cu_sld, irho=0.0)
+        material = SLD(name='material', rho=2, irho=0.0)
+        SEI = SLD(name='SEI', rho=3., irho=0.0)
+    
+        # Film definition ##############################################################
+        sample = (  THF(0, 54.16) | SEI(222, 9.74) | material(42, 9.74) | Cu(560.6, 15.24) | Ti(51, 11.1) | siox(32, 2.92) | Si )
+        return sample
+    
     def set_ranges(self):
         probe = self.experiment.probe
         sample = self.experiment.sample
 
         sample['siox'].thickness.range(1.0, 35.0)
         sample['siox'].interface.range(1.0, 51.0)
-        sample['siox'].material.rho.range(-2, 4.2)
+        sample['siox'].material.rho.range(-2, 2.5)
 
         sample['Ti'].thickness.range(10.0, 100.0)
         sample['Ti'].interface.range(1.0, 20.0)
-        sample['Ti'].material.rho.range(-1.75, -3.5)
+        sample['Ti'].material.rho.range(-2, -4.5)
         sample['Cu'].thickness.range(10.0, 800.0)
         sample['Cu'].interface.range(5.0, 22.0)
 
-        sample['material'].thickness.range(10.0, 100.0)
-        sample['material'].material.rho.range(1.0, 6)
+        sample['material'].thickness.range(10.0, 120.0)
+        sample['material'].material.rho.range(0.0, 6)
         sample['material'].interface.range(1.0, 33.0)
         sample['SEI'].thickness.range(100.0, 350.0)
         sample['SEI'].material.rho.range(0.0, 7.0)
@@ -218,32 +232,33 @@ class Measurement_K_OCV4(Measurement):
         # Materials ####################################################################
         Si = SLD(name='Si', rho=2.07, irho=0.0)
         THF = SLD(name='THF', rho=self.thf_sld, irho=0.0)
-        #siox = SLD(name='siox', rho=3.2, irho=0.0)
+        siox = SLD(name='siox', rho=3.2, irho=0.0)
         Ti = SLD(name='Ti', rho=-2.0, irho=0.0)
         Cu = SLD(name='Cu', rho=self.cu_sld, irho=0.0)
         material = SLD(name='material', rho=2, irho=0.0)
-        SEI = SLD(name='SEI', rho=3., irho=0.0)
-
+        SEI = SLD(name='SEI', rho=3., irho=0.00)
+    
         # Film definition ##############################################################
-        sample = (  THF(0, 54.16) | SEI(222, 9.74) | material(42, 9.74) | Cu(560.6, 15.24) | Ti(51, 11.1) | Si )
+        sample = (  THF(0, 54.16) | SEI(222, 9.74) | material(42, 9.74) | Cu(560.6, 15.24) | Ti(51, 11.1) | siox(32, 2.92) | Si )
         return sample
+    
 
     def set_ranges(self):
         probe = self.experiment.probe
         sample = self.experiment.sample
 
-        #sample['siox'].thickness.range(1.0, 70.0)
-        #sample['siox'].interface.range(1.0, 40.0)
-        #sample['siox'].material.rho.range(-2, 4.2)
+        sample['siox'].thickness.range(1.0, 55.0)
+        sample['siox'].interface.range(1.0, 51.0)
+        sample['siox'].material.rho.range(-2, 4.2)
 
-        sample['Ti'].thickness.range(10.0, 100.0)
-        sample['Ti'].interface.range(15.0, 30.0)
-        sample['Ti'].material.rho.range(-1.75, -6.5)
+        sample['Ti'].thickness.range(10.0, 80.0)
+        sample['Ti'].interface.range(1.0, 20.0)
+        sample['Ti'].material.rho.range(-1.75, -3.5)
         sample['Cu'].thickness.range(10.0, 800.0)
-        sample['Cu'].interface.range(5.0, 35.0)
+        sample['Cu'].interface.range(12.0, 32.0)
 
         sample['material'].thickness.range(10.0, 100.0)
-        sample['material'].material.rho.range(2.0, 6)
+        sample['material'].material.rho.range(1.0, 6)
         sample['material'].interface.range(1.0, 33.0)
         sample['SEI'].thickness.range(100.0, 350.0)
         sample['SEI'].material.rho.range(0.0, 7.0)
@@ -251,7 +266,6 @@ class Measurement_K_OCV4(Measurement):
         sample['SEI'].interface.range(1.0, 25.0)
 
         probe.intensity.range(0.5, 1.15)
-        #probe.background.range(0.0, 1e-05)
 
         sample['THF'].interface.range(1.0, 120.0)
 

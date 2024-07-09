@@ -18,13 +18,15 @@ class Measurement:
         self.n_sample = n_sample
         self.thf_sld = 6.09
         self.cu_sld = 6.425
+        self.q_min = 0.005
     
     def load_data(self):
         q, r, dr, dq = np.loadtxt(self.data_file).T
-        self.q = q
-        self.r = r
-        self.dr = dr
-        self.dq = dq
+        idx = q > self.q_min
+        self.q = q[idx]
+        self.r = r[idx]
+        self.dr = dr[idx]
+        self.dq = dq[idx]
 
         dQ_std = dq/2.35
         probe = QProbe(q, dQ_std, data=(r, dr))
@@ -38,7 +40,7 @@ class Measurement:
         Ti = SLD(name='Ti', rho=-2.0, irho=0.0)
         Cu = SLD(name='Cu', rho=self.cu_sld, irho=0.0)
         material = SLD(name='material', rho=2, irho=0.0)
-        SEI = SLD(name='SEI', rho=2.5, irho=0.0)
+        SEI = SLD(name='SEI', rho=2.5, irho=0.00)
 
         # Film definition ##############################################################
         sample = (  THF(0, 54.16) | SEI(300, 9.74) | material(42, 9.74) | Cu(560.6, 15.24) | Ti(51, 11.1) | siox(32, 2.92) | Si )
@@ -182,6 +184,48 @@ def write_markdown_table(measurement, output_file):
 
             output.write(entry)
 
+
+class Measurement_CuB(Measurement):
+
+    def get_sample(self):
+        # Materials ####################################################################
+        Si = SLD(name='Si', rho=2.07, irho=0.0)
+        THF = SLD(name='THF', rho=self.thf_sld, irho=0.0)
+        siox = SLD(name='siox', rho=3, irho=0.0)
+        Ti = SLD(name='Ti', rho=-1.7, irho=0.0)
+        Cu = SLD(name='Cu', rho=self.cu_sld, irho=0.0)
+        material = SLD(name='material', rho=2.6, irho=0.0)
+        SEI = SLD(name='SEI', rho=3, irho=0.00)
+
+        # Film definition ##############################################################
+        sample = (  THF(0, 54.16) | SEI(233, 80) | material(130, 9.74) | Cu(560.6, 15.24) | Ti(55, 9) | siox(32, 2.92) | Si )
+        return sample
+    
+    def set_ranges(self):
+        probe = self.experiment.probe
+        sample = self.experiment.sample
+
+        sample['siox'].thickness.range(10.0, 40.0)
+        sample['siox'].interface.range(1.0, 10.0)
+        sample['siox'].material.rho.range(1.0, 4.0)
+        sample['Ti'].thickness.range(10.0, 100.0)
+        sample['Ti'].interface.range(1.0, 9.0)
+        sample['Ti'].material.rho.range(-4, 0)
+        sample['Cu'].thickness.range(400.0, 600.0)
+        sample['Cu'].interface.range(1.0, 25.0)
+        #sample['Cu'].material.rho.range(6.3, 7.0)
+        sample['material'].thickness.range(40.0, 200.0)
+        sample['material'].material.rho.range(1.0, 6.3)
+        sample['material'].interface.range(1.0, 35.0)
+        sample['SEI'].thickness.range(100.0, 550.0)
+        sample['SEI'].material.rho.range(0.0, 4.0)
+        #sample['SEI'].material.irho.range(0.0, 0.2)
+        sample['SEI'].interface.range(1.0, 35.0)
+
+        probe.intensity.range(0.7, 1.15)
+        #probe.background.range(0.0, 1e-05)
+        sample['THF'].interface.range(1.0, 120.0)
+        #sample['THF'].material.rho.range(5.5, 6.5)
 
 class Measurement_CuF(Measurement):
     def set_ranges(self):
