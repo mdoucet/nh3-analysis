@@ -154,7 +154,7 @@ Runs: [201334, 207296, 207177, 207218]
     - [Parameters for OCV 1](jan2023/data/results/REFL_201282.md)
     - [Parameters for OCV 2](jan2023/data/results/REFL_201290.md)
     - [Parameters for OCV 3](jan2023/data/results/REFL_201298.md)
-    - [Parameters for OCV 4](jan2023/data/results/REFL_201334.md)
+    - [Parameters for OCV 4](jan2023/data/results/REFL_201306.md)
 
 - dTHF, EtOH is Cu-K
     ![ ](july2023/notebooks/july2023-Rq-Cu-K.png)
