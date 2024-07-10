@@ -2,6 +2,8 @@
 
 QUESTION: in which figure do we use January Cu-F?
 
+ANSWER: We don't!! It was just a repeat
+
 ## Figure 1: Structure as a function of current density
 July Cu-A. Fit output files can be found in `july2023/data/results/refl1d_output`.
 
