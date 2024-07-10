@@ -15,7 +15,9 @@ July Cu-A. Fit output files can be found in `july2023/data/results/refl1d_output
 | -3 | 206976 |
 | 1 hour | 206998 |
 
-![ ](july2023/notebooks/july2023-Rq-Cu-A.png)
+svg files: [R(q)](july2023/notebooks/july2023-Rq-Cu-A.svg) | [SLD](july2023/notebooks/july2023-Cu-A.svg) 
+
+![ ](july2023/notebooks/july2023-Rq-Cu-A.png) 
 ![ ](july2023/notebooks/july2023-Cu-A.png)
 
 
@@ -114,17 +116,34 @@ The figure below shows a comparison for -3 $mA/cm^2$, showing a model with and w
 inner layer. Since including the inner layer does not add information content, we removed it from
 the fit.
 
-![ ](july2023/notebooks/july2023-Cu-A-206976-HC.png)
+![ ](july2023/notebooks/july2023-Cu-A-206976-HC.svg)
+
+
+
+# Samples used for Figures 2 and 3
+| |[January Cu-B dTHF no EtOH](jan2023/notebooks/Cu-B.ipynb) | [Cu-K dTHF + EtOH](july2023/notebooks/Cu-K.ipynb)| [Cu-F dTHF + dEtOH](july2023/notebooks/Cu-F.ipynb)|[Cu-G THF + dEtOH](july2023/notebooks/Cu-G.ipynb)|
+|---| ---|---|---|---|
+|OCV 1| 201282 |207268|207161|207194|
+|CP 1| 201289| 207275|207168|207201|
+|OCV 2| 201290 |207282|207169|207202
+|OCV 3|201298|207296|207177|207210
+|OCV 4|201306|207304|207187|207218|
 
 ## Figure 2: Time-resolved
-- [dTHF, no EtOH is Jan Cu-B](jan2023/trend-model-loop-201289-table.md)
-![](jan2023/notebooks/Cu-B.png)
+### dTHF, no EtOH is Jan Cu-B
+Files: [table](jan2023/trend-model-loop-201289-table.md) | [svg](jan2023/notebooks/Cu-B.svg)
 
-- [dTHF, EtOH is Cu-K](july2023/trend-model-loop-207275-table.md)
-![](july2023/notebooks/Cu-K.png)
+![svg](jan2023/notebooks/Cu-B.svg)
 
-- [dTHF, dEtOH is Cu-F](july2023/trend-model-loop-207168-table.md)
-![](july2023/notebooks/Cu-F.png)
+### dTHF, EtOH is Cu-K
+Files: [table](july2023/trend-model-loop-207275-table.md) |[svg](july2023/notebooks/Cu-K.svg)
+
+![](july2023/notebooks/Cu-K.svg)
+
+### dTHF, dEtOH is Cu-F
+ Files: [table](july2023/trend-model-loop-207168-table.md) | [svg](july2023/notebooks/Cu-F.svg)
+
+![](july2023/notebooks/Cu-F.svg)
 
 
 
@@ -145,47 +164,41 @@ Runs: [201298, 207296, 207177, 207210]
 
 Runs: [201334, 207296, 207177, 207218]
 
-### R(q) and fit parameters
-- dTHF, no EtOH is Jan Cu-B
-    ![ ](jan2023/notebooks/jan2023-Rq-Cu-B.png)
-    ![ ](jan2023/notebooks/jan2023-Cu-B.png)
-    - [Parameters for OCV 1](jan2023/data/results/REFL_201282.md)
-    - [Parameters for OCV 2](jan2023/data/results/REFL_201290.md)
-    - [Parameters for OCV 3](jan2023/data/results/REFL_201298.md)
-    - [Parameters for OCV 4](jan2023/data/results/REFL_201334.md)
+### R(q) and fit parameters for Figure 3
+#### dTHF, no EtOH is Jan Cu-B
+![ ](jan2023/notebooks/jan2023-Rq-Cu-B.png)
+![ ](jan2023/notebooks/jan2023-Cu-B.png)
+- [Parameters for OCV 1](jan2023/data/results/REFL_201282.md)
+- [Parameters for OCV 2](jan2023/data/results/REFL_201290.md)
+- [Parameters for OCV 3](jan2023/data/results/REFL_201298.md)
+- [Parameters for OCV 4](jan2023/data/results/REFL_201334.md)
 
-- dTHF, EtOH is Cu-K
-    ![ ](july2023/notebooks/july2023-Rq-Cu-K.png)
-    ![ ](july2023/notebooks/july2023-Cu-K.png)
-    - [Parameters for OCV 1](july2023/data/results/REFL_207268.md)
-    - [Parameters for OCV 2](july2023/data/results/REFL_207282.md)
-    - [Parameters for OCV 3](july2023/data/results/REFL_207296.md)
-    - [Parameters for OCV 4](july2023/data/results/REFL_207304.md)
+#### dTHF, EtOH is Cu-K
 
-- dTHF, dEtOH is Cu-F
-   ![ ](july2023/notebooks/july2023-Rq-Cu-F.png)
-    ![ ](july2023/notebooks/july2023-Cu-F.png)
-    - [Parameters for OCV 1](july2023/data/results/REFL_207161.md)
-    - [Parameters for OCV 2](july2023/data/results/REFL_207169.md)
-    - [Parameters for OCV 3](july2023/data/results/REFL_207177.md)
-    - [Parameters for OCV 4](july2023/data/results/REFL_207187.md)
-- THF, dEtOH is Cu-G
-   ![ ](july2023/notebooks/july2023-Rq-Cu-G.png)
-    ![ ](july2023/notebooks/july2023-Cu-G.png)
-    - [Parameters for OCV 1](july2023/data/results/REFL_207194.md)
-    - [Parameters for OCV 2](july2023/data/results/REFL_207202.md)
-    - [Parameters for OCV 3](july2023/data/results/REFL_207210.md)
-    - [Parameters for OCV 4](july2023/data/results/REFL_207218.md)
+![ ](july2023/notebooks/july2023-Rq-Cu-K.png)
+![ ](july2023/notebooks/july2023-Cu-K.png)
+- [Parameters for OCV 1](july2023/data/results/REFL_207268.md)
+- [Parameters for OCV 2](july2023/data/results/REFL_207282.md)
+- [Parameters for OCV 3](july2023/data/results/REFL_207296.md)
+- [Parameters for OCV 4](july2023/data/results/REFL_207304.md)
+
+####  dTHF, dEtOH is Cu-F
+![ ](july2023/notebooks/july2023-Rq-Cu-F.png)
+![ ](july2023/notebooks/july2023-Cu-F.png)
+- [Parameters for OCV 1](july2023/data/results/REFL_207161.md)
+- [Parameters for OCV 2](july2023/data/results/REFL_207169.md)
+- [Parameters for OCV 3](july2023/data/results/REFL_207177.md)
+- [Parameters for OCV 4](july2023/data/results/REFL_207187.md)
+####  THF, dEtOH is Cu-G
+![ ](july2023/notebooks/july2023-Rq-Cu-G.png)
+![ ](july2023/notebooks/july2023-Cu-G.png)
+- [Parameters for OCV 1](july2023/data/results/REFL_207194.md)
+- [Parameters for OCV 2](july2023/data/results/REFL_207202.md)
+- [Parameters for OCV 3](july2023/data/results/REFL_207210.md)
+- [Parameters for OCV 4](july2023/data/results/REFL_207218.md)
 
 
-Samples used for Figures 2 and 3
-| |[January Cu-B dTHF no EtOH](jan2023/notebooks/Cu-B.ipynb) | [Cu-K dTHF + EtOH](july2023/notebooks/Cu-K.ipynb)| [Cu-F dTHF + dEtOH](july2023/notebooks/Cu-F.ipynb)|[Cu-G THF + dEtOH](july2023/notebooks/Cu-G.ipynb)|
-|---| ---|---|---|---|
-|OCV 1| 201282 |207268|207161|207194|
-|CP 1| 201289| 207275|207168|207201|
-|OCV 2| 201290 |207282|207169|207202
-|OCV 3|201298|207296|207177|207210
-|OCV 4|201306|207304|207187|207218|
+
 
 
 

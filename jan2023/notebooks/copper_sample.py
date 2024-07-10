@@ -12,13 +12,14 @@ from bumps.dream.stats import var_stats
 
 
 class Measurement:
-    def __init__(self, data_file, n_sample=1000):
+    def __init__(self, data_file, n_sample=1000, fit_abs=False):
         self.data_file = data_file
         self.experiment = None
         self.n_sample = n_sample
         self.thf_sld = 6.09
         self.cu_sld = 6.425
         self.q_min = 0.005
+        self.fit_abs = fit_abs
     
     def load_data(self):
         q, r, dr, dq = np.loadtxt(self.data_file).T
@@ -39,7 +40,10 @@ class Measurement:
         siox = SLD(name='siox', rho=2.8, irho=0.0)
         Ti = SLD(name='Ti', rho=-2.0, irho=0.0)
         Cu = SLD(name='Cu', rho=self.cu_sld, irho=0.0)
-        material = SLD(name='material', rho=2, irho=0.0)
+        if self.fit_abs:
+            material = SLD(name='material', rho=3, irho=0.1)
+        else:
+            material = SLD(name='material', rho=2, irho=0.0)
         SEI = SLD(name='SEI', rho=2.5, irho=0.00)
 
         # Film definition ##############################################################
@@ -194,7 +198,10 @@ class Measurement_CuB(Measurement):
         siox = SLD(name='siox', rho=3, irho=0.0)
         Ti = SLD(name='Ti', rho=-1.7, irho=0.0)
         Cu = SLD(name='Cu', rho=self.cu_sld, irho=0.0)
-        material = SLD(name='material', rho=2.6, irho=0.0)
+        if self.fit_abs:
+            material = SLD(name='material', rho=3, irho=0.1)
+        else:
+            material = SLD(name='material', rho=2, irho=0.0)
         SEI = SLD(name='SEI', rho=3, irho=0.00)
 
         # Film definition ##############################################################
