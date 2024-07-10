@@ -123,7 +123,7 @@ the fit.
 
 
 # Samples used for Figures 2 and 3
-| |[January Cu-B dTHF no EtOH](jan2023/notebooks/Cu-B.ipynb) | [Cu-K dTHF + EtOH](july2023/notebooks/Cu-K.ipynb)| [Cu-F dTHF + dEtOH](july2023/notebooks/Cu-F.ipynb)|[Cu-G THF + dEtOH](july2023/notebooks/Cu-G.ipynb)|
+| |[January Cu-B dTHF no EtOH](jan2023/notebooks/Cu-B-abs.ipynb) | [Cu-K dTHF + EtOH](july2023/notebooks/Cu-K.ipynb)| [Cu-F dTHF + dEtOH](july2023/notebooks/Cu-F.ipynb)|[Cu-G THF + dEtOH](july2023/notebooks/Cu-G.ipynb)|
 |---| ---|---|---|---|
 |OCV 1| 201282 |207268|207161|207194|
 |CP 1| 201289| 207275|207168|207201|
@@ -171,9 +171,9 @@ Runs: [201334, 207296, 207177, 207218]
 ![ ](jan2023/notebooks/jan2023-Rq-Cu-B.png)
 ![ ](jan2023/notebooks/jan2023-Cu-B.png)
 - [Parameters for OCV 1](jan2023/data/results/REFL_201282.md)
-- [Parameters for OCV 2](jan2023/data/results/REFL_201290.md)
-- [Parameters for OCV 3](jan2023/data/results/REFL_201298.md)
-- [Parameters for OCV 4](jan2023/data/results/REFL_201334.md)
+- [Parameters for OCV 2](jan2023/data/results/REFL_201290-abs.md)
+- [Parameters for OCV 3](jan2023/data/results/REFL_201298-abs.md)
+- [Parameters for OCV 4](jan2023/data/results/REFL_201334-abs.md)
 
 #### dTHF, EtOH is Cu-K
 
