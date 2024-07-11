@@ -72,10 +72,12 @@ class Measurement:
         sample['material'].thickness.range(40.0, 200.0)
         sample['material'].material.rho.range(1.0, 8.0)
         sample['material'].interface.range(5.0, 33.0)
+        if self.fit_abs:
+            sample['material'].material.irho.range(0.0, 0.2)
         sample['SEI'].thickness.range(100.0, 550.0)
         sample['SEI'].material.rho.range(0.0, 7.0)
         #sample['SEI'].material.irho.range(0.0, 0.2)
-        sample['SEI'].interface.range(1.0, 25.0)
+        sample['SEI'].interface.range(1.0, 35.0)
 
         probe.intensity.range(0.5, 1.15)
         #probe.background.range(0.0, 1e-05)
@@ -223,6 +225,8 @@ class Measurement_CuB(Measurement):
         #sample['Cu'].material.rho.range(6.3, 7.0)
         sample['material'].thickness.range(40.0, 200.0)
         sample['material'].material.rho.range(1.0, 6.3)
+        if self.fit_abs:
+            sample['material'].material.irho.range(0.0, 0.2)
         sample['material'].interface.range(1.0, 35.0)
         sample['SEI'].thickness.range(100.0, 550.0)
         sample['SEI'].material.rho.range(0.0, 4.0)
