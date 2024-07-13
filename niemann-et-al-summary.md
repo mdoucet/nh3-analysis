@@ -230,7 +230,7 @@ where $P(D|x)$ represents the probability of measuring $D$ given a model defined
 and $\pi(x)$ is the prior distribution of the parameters $x$. The evidence $Z$ represents the 
 probability of our model.
 
-We used the UltraNest (https://johannesbuchner.github.io/UltraNest/) package to estimate the evidence
+We used the UltraNest [2] package to estimate the evidence
 for each model. A flat prior was used for each fit parameter, and the only difference between the two models was the introduction of the absorption parameter for the inner layer.
 
 Once we run the nested sampler for each model to estimate their evidence Z, we can compute the 
@@ -251,5 +251,9 @@ Absorption | 17 | 1.38 | $-192.5 \pm 0.6$
 
 
 
-
 [1]  D.S. Sivia and J. Skilling, Data Analysis - A Bayesian Tutorial, Oxford Science Publications, 2012.
+
+
+[2] Buchner, J., (2021). UltraNest - a robust, general purpose Bayesian inference engine. Journal of Open Source Software, 6(60), 3001, https://doi.org/10.21105/joss.03001
+
+https://johannesbuchner.github.io/UltraNest/
