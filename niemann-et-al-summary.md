@@ -244,4 +244,12 @@ with absorption is 39,000 times more likely to lead to the measured data than th
 without absorption. For this reason, we chose to add the absorption as a fit parameter for all
 data sets for that particular sample.
 
+Model | Number of parameters | $\chi^2$ | $log(Z)$ 
+--- | --- | --- | ---
+No absorption | 16 | 1.49 | $-203.1 \pm 0.5$
+Absorption | 17 | 1.38 | $-192.5 \pm 0.6$
+
+
+
+
 [1]  D.S. Sivia and J. Skilling, Data Analysis - A Bayesian Tutorial, Oxford Science Publications, 2012.
