@@ -201,8 +201,47 @@ Runs: [201334, 207296, 207177, 207218]
 
 ## Supplemental info for absorption
 
+*Add to the ack: The authors would like to thank Dr A. Caruana and Dr C. Kinane for their
+valuable inputs regarding nested sampling.*
 
+The dTHF without EtOH and dTHF with EtOH show an interesting feature under the critical edge.
+A dip in the reflectivity curve under the critical edge is typically indicative of absorption in
+one of the layers. Absoprtion in a layer is modeled by adding an imaginart component to its SLD.
+To ensure that we have the right model, we modeled both samples with and without absorption.
+In both cases, as is usually the case, the absorption does not affect the reflectivity curve beyond the
+critical edge. Its location in Q, on the other hand, will depend on the layer structure, and therefore
+provides a constraint on the model.
 
+We found that fits with and without absorption for the dTHF with EtOH case did not affect the predicted
+SLD profile in a statistically meaningful way. The absorption dip in this case is not statistically significant enought to pull the model towards a different region of parameter space. We therefore modeled the data without absorption.
 
+The fits for sample without ethanol produces signiticantly different results with and without 
+absorption. Although the qualitative interpretation of the data remains similar (namely that the
+layer is thicker and contains more electrolyte degradation products), the SLD value of the SEI
+layer is quite different.
+The following figure compares the SLD profile obtained with and without absorption for OCV 4.
+![ ](jan2023/notebooks/jan2023-Cu-B-abs-comparison.svg)
 
+Since there is a choice to be made between those two models, we used a nested sampler to decide which of the two models should be reported. The nested sampling [1] approach used here uses a markov chain monte carlo method to estimate the evidence $Z$ defined as:
 
+$Z = \int P(D|x) \pi(x) \mathrm{d}x$
+
+where $P(D|x)$ represents the probability of measuring $D$ given a model defined by its parameters $x$
+and $\pi(x)$ is the prior distribution of the parameters $x$. The evidence $Z$ represents the 
+probability of our model.
+
+We used the UltraNest (https://johannesbuchner.github.io/UltraNest/) package to estimate the evidence
+for each model. A flat prior was used for each fit parameter, and the only difference between the two models was the introduction of the absorption parameter for the inner layer.
+
+Once we run the nested sampler for each model to estimate their evidence Z, we can compute the 
+Bayes factor define as the ratio of the probability of obtaining the measured data given each model:
+
+$K = \frac{P(data| absorption)}{P(data|no\ absorption))}$
+
+The evidence values were estimated at $log(Z)=-192.5$ with absorption and 
+$log(Z)=-203.1$ without absorption, leading to $K = 39,071$. This analysis tells us that the model
+with absorption is 39,000 times more likely to lead to the measured data than the model 
+without absorption. For this reason, we chose to add the absorption as a fit parameter for all
+data sets for that particular sample.
+
+[1]  D.S. Sivia and J. Skilling, Data Analysis - A Bayesian Tutorial, Oxford Science Publications, 2012.
