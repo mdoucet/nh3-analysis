@@ -227,7 +227,7 @@ Since there is a choice to be made between those two models, we used a nested sa
 $Z = \int P(D|x) \pi(x) \mathrm{d}x$
 
 where $P(D|x)$ represents the probability of measuring $D$ given a model defined by its parameters $x$
-and $\pi(x)$ is the prior distribution of the parameters $x$. The evidence $Z$ represents the 
+and $\pi(x)$ is the posterior distribution of the parameters $x$. The evidence $Z$ represents the 
 probability of our model.
 
 We used the UltraNest [2] package to estimate the evidence
