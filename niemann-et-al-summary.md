@@ -154,15 +154,21 @@ Files: [table](july2023/trend-model-loop-207275-table.md) |[svg](july2023/notebo
 ### Cycle 1
 ![ ](july2023/notebooks/deuteration-cycle1.png)
 
+File: [svg](july2023/notebooks/deuteration-cycle1.svg)
+
 Runs: [201290, 207282, 207169, 207202]
 
 ### Cycle 2
 ![ ](july2023/notebooks/deuteration-cycle2.png)
 
+File: [svg](july2023/notebooks/deuteration-cycle2.svg)
+
 Runs: [201298, 207296, 207177, 207210]
 
 ### Cycle 3
 ![ ](july2023/notebooks/deuteration-cycle3.png)
+
+File: [svg](july2023/notebooks/deuteration-cycle3.svg)
 
 Runs: [201334, 207296, 207177, 207218]
 
